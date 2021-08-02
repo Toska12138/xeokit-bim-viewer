@@ -41596,38 +41596,32 @@ class sl {
     }
 }
 class ol {
-    constructor(e = {}) {
+    constructor(e={}) {
         this._dataDir = e.dataDir || ""
     }
-
     getProjects(e, t) {
         const i = "./data" + "/projects/index.json";
-        f.loadJSON(i, e, t)
+        _.loadJSON(i, e, t)
     }
-
     getProject(e, t, i) {
         const s = "./data" + "/projects/" + e + "/index.json";
-        f.loadJSON(s, t, i)
+        _.loadJSON(s, t, i)
     }
-
     getMetadata(e, t, i, s) {
-        const r = "./data" + "/projects/" + e + "/models/" + t + "/metadata.json";
-        f.loadJSON(r, i, s)
+        const o = "./data" + "/projects/" + e + "/models/" + t + "/metadata.json";
+        _.loadJSON(o, i, s)
     }
-
     getGeometry(e, t, i, s) {
-        const r = this._dataDir + "/model.xkt";
-        f.loadArraybuffer(r, i, s)
+        const o = this._dataDir + "/model.xkt";
+        _.loadArraybuffer(o, i, s)
     }
-
-    getObjectInfo(e, t, i, s, r) {
-        const o = this._dataDir +  "/" + i + ".json";
-        f.loadJSON(o, s, r)
+    getObjectInfo(e, t, i, s, o) {
+        const r = this._dataDir +  "/" + i + ".json";
+        _.loadJSON(r, s, o)
     }
-
     getIssues(e, t, i, s) {
-        const r = "./data" + "/projects/" + e + "/models/" + t + "/issues.json";
-        f.loadJSON(r, i, s)
+        const o = "./data" + "/projects/" + e + "/models/" + t + "/issues.json";
+        _.loadJSON(o, i, s)
     }
 }
 class rl {

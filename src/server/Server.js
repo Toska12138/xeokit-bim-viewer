@@ -64,7 +64,7 @@ class Server {
      * @param {Function} error Callback through which an error message is returned on error.
      */
     getGeometry(projectId, modelId, done, error) {
-        const url = this._dataDir + "/projects/" + projectId + "/models/" + modelId + "/geometry.xkt";
+        const url = this._dataDir + "/projects/" + projectId + "/models/" + modelId + "/geometry";
         utils.loadArraybuffer(url, done, error);
     }
 

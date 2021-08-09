@@ -438,6 +438,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/bimviewer.js~bimviewer#getqueryenabled",
+    "class/src/BIMViewer.js~BIMViewer.html#instance-method-getQueryEnabled",
+    "src/BIMViewer.js~BIMViewer#getQueryEnabled",
+    "method"
+  ],
+  [
     "src/bimviewer.js~bimviewer#hidesectioneditcontrol",
     "class/src/BIMViewer.js~BIMViewer.html#instance-method-hideSectionEditControl",
     "src/BIMViewer.js~BIMViewer#hideSectionEditControl",
@@ -603,6 +609,12 @@ window.esdocSearchIndex = [
     "src/bimviewer.js~bimviewer#setorthoenabled",
     "class/src/BIMViewer.js~BIMViewer.html#instance-method-setOrthoEnabled",
     "src/BIMViewer.js~BIMViewer#setOrthoEnabled",
+    "method"
+  ],
+  [
+    "src/bimviewer.js~bimviewer#setqueryenabled",
+    "class/src/BIMViewer.js~BIMViewer.html#instance-method-setQueryEnabled",
+    "src/BIMViewer.js~BIMViewer#setQueryEnabled",
     "method"
   ],
   [

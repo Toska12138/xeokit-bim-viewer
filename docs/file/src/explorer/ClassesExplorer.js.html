@@ -83,7 +83,7 @@ class ClassesExplorer extends Controller {
             pruneEmptyNodes: true
         });
 
-        this._treeViewContextMenu = new TreeViewContextMenu();
+        this._treeViewContextMenu = new TreeViewContextMenu(this.bimViewer);
 
         this._treeView.on(&quot;contextmenu&quot;, (e) =&gt; {
             this._treeViewContextMenu.context = {

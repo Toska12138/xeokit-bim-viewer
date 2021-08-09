@@ -46,6 +46,7 @@
     "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
+    "@xeokit/xeokit-bim-viewer": "^2.3.0-alpha.21",
     "@xeokit/xeokit-sdk": "2.0.0-alpha.14"
   }
 }

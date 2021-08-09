@@ -26,7 +26,7 @@ class Server {
      * @param {Function} error Callback through which an error message is returned on error.
      */
     getProjects(done, error) {
-        const url = this._dataDir + "/projects/index.json";
+        const url = "./data" + "/projects/index.json";
         utils.loadJSON(url, done, error);
     }
 
@@ -38,7 +38,7 @@ class Server {
      * @param {Function} error Callback through which an error message is returned on error.
      */
     getProject(projectId, done, error) {
-        const url = this._dataDir + "/projects/" + projectId + "/index.json";
+        const url = "./data" + "/projects/" + projectId + "/index.json";
         utils.loadJSON(url, done, error);
     }
 
@@ -51,7 +51,7 @@ class Server {
      * @param {Function} error Callback through which an error message is returned on error.
      */
     getMetadata(projectId, modelId, done, error) {
-        const url = this._dataDir + "/projects/" + projectId + "/models/" + modelId + "/metadata.json";
+        const url = this._dataDir + "/metadata.json";
         utils.loadJSON(url, done, error);
     }
 
@@ -64,7 +64,7 @@ class Server {
      * @param {Function} error Callback through which an error message is returned on error.
      */
     getGeometry(projectId, modelId, done, error) {
-        const url = this._dataDir + "/projects/" + projectId + "/models/" + modelId + "/geometry.xkt";
+        const url = this._dataDir + "/model.xkt";
         utils.loadArraybuffer(url, done, error);
     }
 
@@ -78,8 +78,8 @@ class Server {
      * @param {Function} error Callback through which an error message is returned on error.
      */
     getObjectInfo(projectId, modelId, objectId, done, error) {
-        const url = this._dataDir + "/projects/" + projectId + "/models/" + modelId + "/props/" + objectId + ".json";
-        utils.loadJSON(url, done, error);
+        const url = this._dataDir + "/objects" + "/metadata.json";
+        utils.loadJSONElement(url, objectId, done, error);
     }
 
     /**

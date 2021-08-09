@@ -63,9 +63,15 @@
         const enableEditModels = (requestParams.enableEditModels === "true");
         const enableQueryObjects = (requestParams.enableQueryObjects === "true");
 
+        // Get URL from S3
+        const urlParams = new URLSearchParams(window.location.search);
+        const bucket = urlParams.get('bucket');
+        const key = urlParams.get('path');
+        const s3Url = `https://${bucket}.s3.ap-southeast-1.amazonaws.com/${key}`;
+
         // Server client will load data from the file systems
         const server = new Server({
-            dataDir: "./data"
+            dataDir: s3Url//"./data"
         });
 
         // Create  BIMViewer that loads data via the Server

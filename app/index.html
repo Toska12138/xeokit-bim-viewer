@@ -51,7 +51,7 @@
         const locale = requestParams.locale || "en";
 
         // Project to load into the viewer
-        const projectId = requestParams.projectId;
+        const projectId = "HDB";
         if (!projectId) {
             return;
         }
@@ -71,7 +71,7 @@
 
         // Server client will load data from the file systems
         const server = new Server({
-            dataDir: "./data"
+            dataDir: s3Url
         });
 
         // Create  BIMViewer that loads data via the Server

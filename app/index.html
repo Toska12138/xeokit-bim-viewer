@@ -61,7 +61,7 @@
         setExplorerOpen(openExplorer === "true");
 
         const enableEditModels = (requestParams.enableEditModels === "true");
-        const enableQueryObjects = (requestParams.enableQueryObjects === "true");
+        const enableQueryObjects = true//(requestParams.enableQueryObjects === "true");
 
         // Get URL from S3
         const urlParams = new URLSearchParams(window.location.search);

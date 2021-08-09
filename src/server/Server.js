@@ -79,7 +79,7 @@ class Server {
      */
     getObjectInfo(projectId, modelId, objectId, done, error) {
         const url = this._dataDir + "/objects" + "/metadata.json";
-        utils.loadJSONElement(url, objectId, done, error);
+        utils.loadJSON(url, objectId, done, error);
     }
 
     /**

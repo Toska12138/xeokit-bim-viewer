@@ -389,8 +389,7 @@ new  ````externalMetadata: true```` configuration to the ````viewerConfigs```` i
 > **This section goes deeper into the viewer, describing how to instantiate a viewer, and how to use its JavaScript
 programming API.**
 
-The viewer is implemented by the
-JavaScript [````BIMViewer````](https://xeokit.github.io/xeokit-bim-viewer/docs/class/src/BIMViewer.js~BIMViewer.html)
+The viewer is implemented by the JavaScript [````BIMViewer````](https://xeokit.github.io/xeokit-bim-viewer/docs/class/src/BIMViewer.js~BIMViewer.html)
 class, which provides a complete set of methods to programmatically control it.
 
 Using these methods, we can:
@@ -927,6 +926,75 @@ export {IFCObjectDefaults};
 
 Sometimes IFC models have opaque ````IfcWindow```` and ````IfcSpace```` elements, so it's a good idea to have
 configurations in there so that we can see through them.
+
+### Localizing a Viewer
+
+The easiest way to localize a BIMViewer is by loading translation strings into its locale service, which is implemented 
+by a xeokit [LocaleService](https://xeokit.github.io/xeokit-sdk/docs/class/src/viewer/localization/LocaleService.js~LocaleService.html). 
+
+The snippet below shows how it's done, using a partial set of the translations expected by the components
+within the BIMViewer. We'll just show the translations for the faces of the NavCube. We'll also load the translations 
+inline, rather than fetch them from a separate JSON file, as we would in practice.
+
+We call translations "messages". Our metaphor is that the UI "conveys messages to the user". 
+
+To see all the translations expected by a BIMViewer, take a look at the translations we've configured for the bundled BIMViewer 
+demo application:  [````/app/locales/messages.js````](/app/locales/messages.js).  
+
+````javascript
+myBIMViewer.localeService.loadMessages({
+    "en": { // English
+        "NavCube": {
+            "front": "Front",
+            "back": "Back",
+            "top": "Top",
+            "bottom": "Bottom",
+            "left": "Left",
+            "right": "Right"
+        },
+        //..
+    },
+    "mi": { // Māori
+        "NavCube": {
+            "front": "Mua",
+            "back": "Tuarā",
+            "top": "Runga",
+            "bottom": "Raro",
+            "left": "Mauī",
+            "right": "Tika"
+        },
+        //..
+    },
+    "fr": { // French
+        "NavCube": {
+            "front": "Avant",
+            "back": "Arrière",
+            "top": "Supérieur",
+            "bottom": "Inférieur",
+            "left": "Gauche",
+            "right": "Droit"
+        },
+        //..
+    },
+    "jp": { // Japanese
+        "NavCube": {
+            "front": "前部",
+            "backLabel": "裏",
+            "topLabel": "上",
+            "bottomLabel": "底",
+            "leftLabel": "左",
+            "rightLabel": "右"
+        },
+        //..
+    },
+});
+````
+
+Once we've loaded our translations, we can switch the BIMViewer between locales like so:
+
+````javascript
+myBIMViewer.localeService.locale = "jp";
+````
 
 ## xeokit Components Used in the Viewer
 

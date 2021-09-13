@@ -1,46 +1,51 @@
 {
-  "coverage": "32.91%",
-  "expectCount": 316,
-  "actualCount": 104,
+  "coverage": "32.15%",
+  "expectCount": 339,
+  "actualCount": 109,
   "files": {
     "src/BIMViewer.js": {
-      "expectCount": 92,
-      "actualCount": 58,
+      "expectCount": 99,
+      "actualCount": 60,
       "undocumentLines": [
-        29,
+        30,
         76,
-        105,
-        206,
-        218,
-        223,
+        110,
+        122,
+        224,
+        226,
         227,
-        236,
-        243,
-        250,
-        257,
+        245,
+        246,
+        253,
         262,
-        275,
-        288,
+        269,
+        276,
+        284,
+        290,
         295,
-        301,
-        306,
-        312,
-        317,
-        322,
-        328,
+        308,
+        319,
+        325,
+        331,
         336,
-        341,
-        430,
-        432,
-        438,
-        501,
-        503,
-        504,
-        541,
-        1016,
-        1067,
-        1076,
-        1188
+        342,
+        347,
+        352,
+        356,
+        364,
+        369,
+        450,
+        452,
+        458,
+        521,
+        523,
+        524,
+        561,
+        1046,
+        1097,
+        1106,
+        1235,
+        1499
       ]
     },
     "src/BusyModal.js": {
@@ -75,10 +80,8 @@
     },
     "src/IFCElementDescriptions/IFCElementDescriptions.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        1
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/IFCObjectDefaults/ModelIFCObjectColors.js": {
       "expectCount": 1,
@@ -115,35 +118,40 @@
       ]
     },
     "src/contextMenus/ObjectContextMenu.js": {
-      "expectCount": 2,
+      "expectCount": 5,
       "actualCount": 1,
       "undocumentLines": [
-        7
+        8,
+        10,
+        14,
+        80
       ]
     },
     "src/contextMenus/SectionToolContextMenu.js": {
       "expectCount": 11,
-      "actualCount": 0,
-      "undocumentLines": [
-        3,
-        4,
-        6,
-        8,
-        16,
-        17,
-        19,
-        23,
-        30,
-        107,
-        133
-      ]
-    },
-    "src/contextMenus/TreeViewContextMenu.js": {
-      "expectCount": 3,
       "actualCount": 1,
       "undocumentLines": [
         3,
-        9
+        4,
+        11,
+        19,
+        20,
+        22,
+        26,
+        33,
+        107,
+        137
+      ]
+    },
+    "src/contextMenus/TreeViewContextMenu.js": {
+      "expectCount": 6,
+      "actualCount": 1,
+      "undocumentLines": [
+        3,
+        10,
+        12,
+        16,
+        81
       ]
     },
     "src/explorer/ClassesExplorer.js": {
@@ -168,7 +176,7 @@
       ]
     },
     "src/explorer/ModelsExplorer.js": {
-      "expectCount": 38,
+      "expectCount": 39,
       "actualCount": 2,
       "undocumentLines": [
         7,
@@ -199,14 +207,15 @@
         215,
         219,
         258,
-        318,
-        342,
-        351,
-        355,
+        314,
+        335,
         359,
-        363,
-        367,
-        371
+        368,
+        372,
+        376,
+        380,
+        384,
+        388
       ]
     },
     "src/explorer/ObjectsExplorer.js": {
@@ -250,6 +259,23 @@
         128,
         143,
         184
+      ]
+    },
+    "src/inspector/PropertiesInspector.js": {
+      "expectCount": 12,
+      "actualCount": 1,
+      "undocumentLines": [
+        6,
+        18,
+        20,
+        21,
+        22,
+        28,
+        51,
+        65,
+        74,
+        115,
+        123
       ]
     },
     "src/server/Server.js": {
@@ -309,12 +335,10 @@
       ]
     },
     "src/toolbar/QueryTool.js": {
-      "expectCount": 4,
+      "expectCount": 2,
       "actualCount": 1,
       "undocumentLines": [
-        6,
-        29,
-        61
+        6
       ]
     },
     "src/toolbar/ResetAction.js": {

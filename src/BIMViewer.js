@@ -113,6 +113,18 @@ function createInspectorTemplate() {
     return inspectorTemplate;
 }
 
+function createInspectorTemplate() {
+    const inspectorTemplate = `<div class="xeokit-tabs">  
+    <div class="xeokit-tab xeokit-propertiesTab">
+        <a class="xeokit-i18n xeokit-tab-btn disabled" href="#" data-xeokit-i18n="propertiesInspector.title">Properties</a>
+        <div class="xeokit-tab-content">        
+        <div class="xeokit-properties"></div>
+        </div>
+    </div>
+</div>`;
+    return inspectorTemplate;
+}
+
 function initTabs(containerElement) {
 
     const tabsClass = 'xeokit-tabs';

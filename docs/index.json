@@ -641,6 +641,30 @@
     "importPath": "@xeokit/xeokit-bim-viewer/src/BIMViewer.js",
     "importStyle": null,
     "description": null,
+    "lineNumber": 76,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "function",
+    "name": "createInspectorTemplate",
+    "memberof": "src/BIMViewer.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/BIMViewer.js~createInspectorTemplate",
+    "access": "public",
+    "export": false,
+    "importPath": "@xeokit/xeokit-bim-viewer/src/BIMViewer.js",
+    "importStyle": null,
+    "description": null,
     "lineNumber": 110,
     "undocument": true,
     "params": [],

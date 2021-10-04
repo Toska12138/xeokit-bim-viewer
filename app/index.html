@@ -71,7 +71,7 @@
 
         // Server client will load data from the file systems
         const server = new Server({
-            dataDir: "./data"
+            dataDir: s3Url
         });
 
         // Create  BIMViewer that loads data via the Server

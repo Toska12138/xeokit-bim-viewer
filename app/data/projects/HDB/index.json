@@ -1,0 +1,49 @@
+{
+    "id": "HDB",
+    "name": "HDB",
+    "models": [
+        {
+            "id": "design",
+<<<<<<< HEAD
+<<<<<<< HEAD
+            "name": "As-Design"
+=======
+            "name": "As-Deisgn"
+>>>>>>> 761f4d8fc7e19c868e7ef4606d428eb5d5a0add2
+        },
+        {
+            "id": "built",
+            "name": "As-Built"
+<<<<<<< HEAD
+=======
+            "name": "HDB"
+>>>>>>> 68cd3147006e3a468291e7d12c97a52e65b8d6ab
+=======
+>>>>>>> 761f4d8fc7e19c868e7ef4606d428eb5d5a0add2
+        }
+    ],
+    "viewerConfigs": {
+        "externalMetadata": false
+    },
+    "viewerContent": {
+        "modelsLoaded": [
+<<<<<<< HEAD
+<<<<<<< HEAD
+            "design",
+            "built"
+=======
+            "design"
+>>>>>>> 68cd3147006e3a468291e7d12c97a52e65b8d6ab
+=======
+            "design",
+            "built"
+>>>>>>> 761f4d8fc7e19c868e7ef4606d428eb5d5a0add2
+        ]
+    },
+    "viewerState": {
+        "tabOpen": "classes",
+        "expandObjectsTree": 1,
+        "expandClassesTree": 1,
+        "expandStoreysTree": 1
+    }
+}

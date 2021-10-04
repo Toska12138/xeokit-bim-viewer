@@ -52,7 +52,7 @@
         const enableEditModels = (requestParams.enableEditModels === "true");
 
         const server = new Server({
-            dataDir: "./data"//s3Url
+            dataDir: s3Url
         });
 
         const bimViewer = new BIMViewer(server, {

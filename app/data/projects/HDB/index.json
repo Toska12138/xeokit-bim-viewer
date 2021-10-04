@@ -4,11 +4,7 @@
     "models": [
         {
             "id": "design",
-            "name": "As-Deisgn"
-        },
-        {
-            "id": "built",
-            "name": "As-Built"
+            "name": "HDB"
         }
     ],
     "viewerConfigs": {
@@ -16,8 +12,7 @@
     },
     "viewerContent": {
         "modelsLoaded": [
-            "design",
-            "built"
+            "design"
         ]
     },
     "viewerState": {

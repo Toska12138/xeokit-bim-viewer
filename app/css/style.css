@@ -16,13 +16,27 @@ body {
 
 #myViewer {
     display: flex;
-    width: 100%;
+    width: 50%;
     height: 100%;
     align-items: stretch;
     z-index: 10000;
     /*overflow: hidden;*/
     position: absolute;
     left: 0;
+    right: 0;
+    --left: 0;
+    --right: 0;
+    transition: all 300ms ease-in-out;
+}
+
+#myViewer2 {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    align-items: stretch;
+    z-index: 10000;
+    /*overflow: hidden;*/
+    position: absolute;
     right: 0;
     --left: 0;
     --right: 0;
@@ -41,9 +55,32 @@ body {
     left: 95px;
     transition: all 300ms ease-in-out;
 }
+#myToolbar2 {
+    display: none;
+    min-width: 400px;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 100000;
+    pointer-events: none;
+    position: fixed;
+    right: 95px;
+    transition: all 300ms ease-in-out;
+}
 
 #myCanvas {
-    width: 50%;
+    width: 100%;
+    height: 100%;
+    background: #f2f2f2;
+    cursor: default;
+    pointer-events: all;
+    margin: 0;
+    position: relative;
+}
+
+#myCanvas2 {
+    width: 100%;
     height: 100%;
     background: #f2f2f2;
     cursor: default;
@@ -61,7 +98,33 @@ body {
     z-index: 200000;
 }
 
+#myNavCubeCanvas2 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    bottom: 0;
+    right: 0;
+    z-index: 200000;
+}
+
 #myExplorer {
+    position: fixed;
+    height: 100%;
+    color: #fff;
+    background: #03103F;
+    overflow: auto;
+    border-right: 2px solid #212529;
+    padding: 0px;
+    padding-bottom: 100px;
+    padding-left: 15px;
+    user-select: none;
+    top: 0;
+    left: -460px;
+    z-index: 10;
+    width: 460px;
+    transition: all 300ms ease-in-out;
+}
+#myExplorer2 {
     position: fixed;
     height: 100%;
     color: #fff;

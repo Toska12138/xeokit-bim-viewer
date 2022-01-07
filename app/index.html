@@ -23,6 +23,8 @@
 
 <div id="myExplorer"></div>
 <div id="myToolbar"></div>
+<div id="myExplorer2"></div>
+<div id="myToolbar2"></div>
 <div id="myViewer">
     <canvas id="myCanvas"></canvas>
     <canvas id="myNavCubeCanvas"></canvas>
@@ -103,7 +105,9 @@
                 locale: locale
             }),
             canvasElement: document.getElementById("myCanvas2"), // WebGL canvas
+            explorerElement: document.getElementById("myExplorer2"), // Left panel
             navCubeCanvasElement: document.getElementById("myNavCubeCanvas2"),
+            toolbarElement: document.getElementById("myToolbar2"), // Toolbar,
             busyModelBackdropElement: document.getElementById("myViewer2")
         });
 

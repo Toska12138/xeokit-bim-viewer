@@ -25,8 +25,11 @@
 <div id="myToolbar"></div>
 <div id="myViewer">
     <canvas id="myCanvas"></canvas>
-    <canvas id="myCanvas2"></canvas>
     <canvas id="myNavCubeCanvas"></canvas>
+</div>
+<div id="myViewer2">
+    <canvas id="myCanvas2"></canvas>
+    <canvas id="myNavCubeCanvas2"></canvas>
 </div>
 
 </body>
@@ -74,6 +77,10 @@
         const server = new Server({
             dataDir: "./data"
         });
+        
+        const server2 = new Server({
+            dataDir: "./data"
+        });
 
         // Create  BIMViewer that loads data via the Server
         const bimViewer = new BIMViewer(server, {
@@ -90,18 +97,14 @@
             enableQueryObjects: enableQueryObjects
         });
         
-         const bimViewer2 = new BIMViewer(server, {
+         const bimViewer2 = new BIMViewer(server2, {
             localeService: new LocaleService({
                 messages: localeMessages,
                 locale: locale
             }),
             canvasElement: document.getElementById("myCanvas2"), // WebGL canvas
-            explorerElement: document.getElementById("myExplorer"), // Left panel
-            toolbarElement: document.getElementById("myToolbar"), // Toolbar
-            navCubeCanvasElement: document.getElementById("myNavCubeCanvas"),
-            busyModelBackdropElement: document.getElementById("myViewer"),
-            enableEditModels: enableEditModels,
-            enableQueryObjects: enableQueryObjects
+            navCubeCanvasElement: document.getElementById("myNavCubeCanvas2"),
+            busyModelBackdropElement: document.getElementById("myViewer2")
         });
 
         bimViewer.localeService.on("updated", () => {
@@ -136,9 +139,43 @@
                 }
             });
         });
+        
+        bimViewer2.localeService.on("updated", () => {
+
+            // Create tooltip, and possibly label text, on each element tagged as localized
+
+            const localizedElements = document.querySelectorAll('.xeokit-i18n');
+
+            localizedElements.forEach((localizedElement) => {
+
+                // Update text label
+                if (localizedElement.dataset.xeokitI18n) {
+                    localizedElement.innerText = bimViewer.localeService.translate(localizedElement.dataset.xeokitI18n);
+                }
+
+                // Create text for tooltip
+                if (localizedElement.dataset.xeokitI18ntip) {
+                    localizedElement.dataset.tippyContent = bimViewer.localeService.translate(localizedElement.dataset.xeokitI18ntip);
+                }
+
+                // Create tooltip from text, or update existing tooltip
+                if (localizedElement.dataset.tippyContent) {
+                    if (localizedElement._tippy) {
+                        localizedElement._tippy.setContent(localizedElement.dataset.tippyContent);
+                    } else {
+                        tippy(localizedElement, {
+                            appendTo: "parent",
+                            zIndex: 1000000,
+                            allowHTML: true
+                        });
+                    }
+                }
+            });
+        });
 
         // Configure our viewer
         bimViewer.setConfigs({});
+        bimViewer2.setConfigs({});
 
         // Object properties queries
 
@@ -260,11 +297,6 @@
                 const modelId = requestParams.modelId;
                 if (modelId) {
                     bimViewer.loadModel(modelId);
-                }
-
-                const tab = requestParams.tab;
-                if (tab) {
-                    bimViewer.openTab(tab);
                 }
 
                 //

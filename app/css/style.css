@@ -16,7 +16,7 @@ body {
 
 #myViewer {
     display: flex;
-    width: 100%;
+    width: 50%;
     height: 100%;
     align-items: stretch;
     z-index: 10000;

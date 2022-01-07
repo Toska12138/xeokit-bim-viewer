@@ -25,6 +25,7 @@
 <div id="myToolbar"></div>
 <div id="myViewer">
     <canvas id="myCanvas"></canvas>
+    <canvas id="myCanvas2"></canvas>
     <canvas id="myNavCubeCanvas"></canvas>
 </div>
 
@@ -81,6 +82,20 @@
                 locale: locale
             }),
             canvasElement: document.getElementById("myCanvas"), // WebGL canvas
+            explorerElement: document.getElementById("myExplorer"), // Left panel
+            toolbarElement: document.getElementById("myToolbar"), // Toolbar
+            navCubeCanvasElement: document.getElementById("myNavCubeCanvas"),
+            busyModelBackdropElement: document.getElementById("myViewer"),
+            enableEditModels: enableEditModels,
+            enableQueryObjects: enableQueryObjects
+        });
+        
+         const bimViewer2 = new BIMViewer(server, {
+            localeService: new LocaleService({
+                messages: localeMessages,
+                locale: locale
+            }),
+            canvasElement: document.getElementById("myCanvas2"), // WebGL canvas
             explorerElement: document.getElementById("myExplorer"), // Left panel
             toolbarElement: document.getElementById("myToolbar"), // Toolbar
             navCubeCanvasElement: document.getElementById("myNavCubeCanvas"),
@@ -199,6 +214,41 @@
 
         // Load a project
         bimViewer.loadProject(projectId, () => {
+
+                // The project may load one or models initially.
+
+                // Withe request params, we can also specify:
+                //  - models to load
+                // - explorer tab to open
+
+
+                const modelId = requestParams.modelId;
+                if (modelId) {
+                    bimViewer.loadModel(modelId);
+                }
+
+                const tab = requestParams.tab;
+                if (tab) {
+                    bimViewer.openTab(tab);
+                }
+
+                //
+                window.setInterval((function () {
+                    var lastHash = "";
+                    return function () {
+                        const currentHash = window.location.hash;
+                        if (currentHash !== lastHash) {
+                            parseHashParams();
+                            lastHash = currentHash;
+                        }
+                    };
+                })(), 200);
+            },
+            (errorMsg) => {
+                console.error(errorMsg);
+            });
+        
+        bimViewer2.loadProject(projectId, () => {
 
                 // The project may load one or models initially.
 

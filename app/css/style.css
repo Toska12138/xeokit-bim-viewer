@@ -16,7 +16,7 @@ body {
 
 #myViewer {
     display: flex;
-    width: 50%;
+    width: 100%;
     height: 100%;
     align-items: stretch;
     z-index: 10000;
@@ -43,7 +43,7 @@ body {
 }
 
 #myCanvas {
-    width: 100%;
+    width: 50%;
     height: 100%;
     background: #f2f2f2;
     cursor: default;

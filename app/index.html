@@ -334,11 +334,11 @@
         var i2iDist = 7;
         camera.on("viewMatrix", function(matrix) {
             cameraModifying = true;
-            viewpoint = bcfViewpoints.getViewpoint();
+            viewpoint = bimViewer.saveBCFViewpoint({});
             var longSide = Math.sqrt( eye[0]*eye[0] + eye[1]*eye[1] + eye[2]*eye[2] );
             var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
             if(!cameraModifying2){
-                bcfViewpoints2.setViewpoint(viewpoint);
+                bimViewer2.loadBCFViewpoint(viewpoint,{});
                 bimViewer2.setCamera({
                     "eye": eye,
                     "look": look,
@@ -356,9 +356,11 @@
         var up2 = camera2.up;
         camera2.on("viewMatrix", function(matrix) {
             cameraModifying2 = true;
+            viewpoint = bimViewer2.saveBCFViewpoint({});
             var longSide = Math.sqrt( eye2[0]*eye2[0] + eye2[1]*eye2[1] + eye2[2]*eye2[2] );
             var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
             if(!cameraModifying) {
+                bimViewer.loadBCFViewpoint(viewpoint,{});
                 bimViewer.setCamera({
                     "eye": eye2,
                     "look": look2,

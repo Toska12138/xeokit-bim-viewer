@@ -332,13 +332,25 @@
         var look = camera.look;
         var up = camera.up;
         var i2iDist = 7;
-        camera.on("viewMatrix", function(matrix) {
+        bimViewer.viewer.scene.on("rendered", function (e) {
             cameraModifying = true;
             viewpoint = bimViewer.saveBCFViewpoint({});
             var longSide = Math.sqrt( eye[0]*eye[0] + eye[1]*eye[1] + eye[2]*eye[2] );
             var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
             if(!cameraModifying2){
                 bimViewer2.loadBCFViewpoint(viewpoint,{});
+                bimViewer2.setCamera({
+                    "eye": eye,
+                    "look": look,
+                    "up": up
+                });
+                bimViewer2.viewer.scene.camera.orbitYaw(yawAngle);
+        });
+        camera.on("viewMatrix", function(matrix) {
+            cameraModifying = true; 
+            var longSide = Math.sqrt( eye[0]*eye[0] + eye[1]*eye[1] + eye[2]*eye[2] );
+            var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
+            if(!cameraModifying2){
                 bimViewer2.setCamera({
                     "eye": eye,
                     "look": look,

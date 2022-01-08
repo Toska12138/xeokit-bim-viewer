@@ -323,6 +323,11 @@
             (errorMsg) => {
                 console.error(errorMsg);
             });
+        
+        const bcfViewpoints = new BCFViewpointsPlugin(bimViewer.viewer);
+        const bcfViewpoints2 = new BCFViewpointsPlugin(bimViewer2.viewer);
+        const viewpoint = bcfViewpoints.getViewpoint();
+        bcfViewpoints.setViewpoint(viewpoint);
         var cameraModifying = false;
         var cameraModifying2 = false;
         var camera = bimViewer.viewer.scene.camera;
@@ -332,9 +337,11 @@
         var i2iDist = 7;
         camera.on("viewMatrix", function(matrix) {
             cameraModifying = true;
+            viewpoint = bcfViewpoints.getViewpoint();
             var longSide = Math.sqrt( eye[0]*eye[0] + eye[1]*eye[1] + eye[2]*eye[2] );
             var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
             if(!cameraModifying2){
+                bcfViewpoints2.setViewpoint(viewpoint);
                 bimViewer2.setCamera({
                     "eye": eye,
                     "look": look,

@@ -83,9 +83,9 @@
             dataDir: "./data"
         });
         
-//         const server2 = new Server({
-//             dataDir: "./data"
-//         });
+        const server2 = new Server({
+            dataDir: "./data"
+        });
 
         // Create  BIMViewer that loads data via the Server
         const bimViewer = new BIMViewer(server, {
@@ -104,17 +104,17 @@
         const scene2 = new Scene(bimViewer.viewer, {
             "canvasElement": document.getElementById("myCanvas2")
         });
-//         const bimViewer2 = new BIMViewer(server2, {
-//             localeService: new LocaleService({
-//                 messages: localeMessages,
-//                 locale: locale
-//             }),
-//             canvasElement: document.getElementById("myCanvas2"), // WebGL canvas
-//             explorerElement: document.getElementById("myExplorer"), // Left panel
-//             navCubeCanvasElement: document.getElementById("myNavCubeCanvas2"),
-//             toolbarElement: document.getElementById("myToolbar"), // Toolbar,
-//             busyModelBackdropElement: document.getElementById("myViewer2")
-//         });
+        const bimViewer2 = new BIMViewer(server2, {
+            localeService: new LocaleService({
+                messages: localeMessages,
+                locale: locale
+            }),
+            canvasElement: document.getElementById("myCanvas2"), // WebGL canvas
+            explorerElement: document.getElementById("myExplorer"), // Left panel
+            navCubeCanvasElement: document.getElementById("myNavCubeCanvas2"),
+            toolbarElement: document.getElementById("myToolbar"), // Toolbar,
+            busyModelBackdropElement: document.getElementById("myViewer2")
+        });
         
         bimViewer.localeService.on("updated", () => {
 
@@ -149,42 +149,42 @@
             });
         });
         
-//         bimViewer2.localeService.on("updated", () => {
+        bimViewer2.localeService.on("updated", () => {
 
-//             // Create tooltip, and possibly label text, on each element tagged as localized
+            // Create tooltip, and possibly label text, on each element tagged as localized
 
-//             const localizedElements = document.querySelectorAll('.xeokit-i18n');
+            const localizedElements = document.querySelectorAll('.xeokit-i18n');
 
-//             localizedElements.forEach((localizedElement) => {
+            localizedElements.forEach((localizedElement) => {
 
-//                 // Update text label
-//                 if (localizedElement.dataset.xeokitI18n) {
-//                     localizedElement.innerText = bimViewer.localeService.translate(localizedElement.dataset.xeokitI18n);
-//                 }
+                // Update text label
+                if (localizedElement.dataset.xeokitI18n) {
+                    localizedElement.innerText = bimViewer.localeService.translate(localizedElement.dataset.xeokitI18n);
+                }
 
-//                 // Create text for tooltip
-//                 if (localizedElement.dataset.xeokitI18ntip) {
-//                     localizedElement.dataset.tippyContent = bimViewer.localeService.translate(localizedElement.dataset.xeokitI18ntip);
-//                 }
+                // Create text for tooltip
+                if (localizedElement.dataset.xeokitI18ntip) {
+                    localizedElement.dataset.tippyContent = bimViewer.localeService.translate(localizedElement.dataset.xeokitI18ntip);
+                }
 
-//                 // Create tooltip from text, or update existing tooltip
-//                 if (localizedElement.dataset.tippyContent) {
-//                     if (localizedElement._tippy) {
-//                         localizedElement._tippy.setContent(localizedElement.dataset.tippyContent);
-//                     } else {
-//                         tippy(localizedElement, {
-//                             appendTo: "parent",
-//                             zIndex: 1000000,
-//                             allowHTML: true
-//                         });
-//                     }
-//                 }
-//             });
-//         });
+                // Create tooltip from text, or update existing tooltip
+                if (localizedElement.dataset.tippyContent) {
+                    if (localizedElement._tippy) {
+                        localizedElement._tippy.setContent(localizedElement.dataset.tippyContent);
+                    } else {
+                        tippy(localizedElement, {
+                            appendTo: "parent",
+                            zIndex: 1000000,
+                            allowHTML: true
+                        });
+                    }
+                }
+            });
+        });
 
         // Configure our viewer
         bimViewer.setConfigs({});
-//         bimViewer2.setConfigs({});
+        bimViewer2.setConfigs({});
 
         // Object properties queries
 
@@ -294,78 +294,78 @@
                 console.error(errorMsg);
             });
         
-//         bimViewer2.loadProject(projectId, () => {
+        bimViewer2.loadProject(projectId, () => {
 
-//                 // The project may load one or models initially.
+                // The project may load one or models initially.
 
-//                 // Withe request params, we can also specify:
-//                 //  - models to load
-//                 // - explorer tab to open
+                // Withe request params, we can also specify:
+                //  - models to load
+                // - explorer tab to open
 
 
-//                 const modelId = requestParams.modelId;
-//                 if (modelId) {
-//                     bimViewer.loadModel(modelId);
-//                 }
+                const modelId = requestParams.modelId;
+                if (modelId) {
+                    bimViewer.loadModel(modelId);
+                }
 
-//                 //
-//                 window.setInterval((function () {
-//                     var lastHash = "";
-//                     return function () {
-//                         const currentHash = window.location.hash;
-//                         if (currentHash !== lastHash) {
-//                             parseHashParams();
-//                             lastHash = currentHash;
-//                         }
-//                     };
-//                 })(), 200);
-//             },
-//             (errorMsg) => {
-//                 console.error(errorMsg);
-//             });
-//         var cameraModifying = false;
-//         var cameraModifying2 = false;
-//         var camera = bimViewer.viewer.scene.camera;
-//         var eye = camera.eye;
-//         var look = camera.look;
-//         var up = camera.up;
-//         var i2iDist = 7;
-//         camera.on("viewMatrix", function(matrix) {
-//             cameraModifying = true;
-//             var longSide = Math.sqrt( eye[0]*eye[0] + eye[1]*eye[1] + eye[2]*eye[2] );
-//             var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
-//             if(!cameraModifying2){
-//                 bimViewer2.setCamera({
-//                     "eye": eye,
-//                     "look": look,
-//                     "up": up
-//                 });
-//                 bimViewer2.viewer.scene.camera.orbitYaw(yawAngle);
-//             }
-//             cameraModifying = false;
-//             console.log(bimViewer.viewer.scene.camera.eye);
-//             console.log(bimViewer2.viewer.scene.camera.eye);
-//         });
-//         var camera2 = bimViewer2.viewer.scene.camera;
-//         var eye2 = camera2.eye;
-//         var look2 = camera2.look;
-//         var up2 = camera2.up;
-//         camera2.on("viewMatrix", function(matrix) {
-//             cameraModifying2 = true;
-//             var longSide = Math.sqrt( eye2[0]*eye2[0] + eye2[1]*eye2[1] + eye2[2]*eye2[2] );
-//             var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
-//             if(!cameraModifying) {
-//                 bimViewer.setCamera({
-//                     "eye": eye2,
-//                     "look": look2,
-//                     "up": up2
-//                 });
-//                 bimViewer.viewer.scene.camera.orbitYaw(-yawAngle);
-//             }
-//             console.log(bimViewer.viewer.scene.camera.eye);
-//             console.log(bimViewer2.viewer.scene.camera.eye);
-//             cameraModifying2 = false;
-//         });
+                //
+                window.setInterval((function () {
+                    var lastHash = "";
+                    return function () {
+                        const currentHash = window.location.hash;
+                        if (currentHash !== lastHash) {
+                            parseHashParams();
+                            lastHash = currentHash;
+                        }
+                    };
+                })(), 200);
+            },
+            (errorMsg) => {
+                console.error(errorMsg);
+            });
+        var cameraModifying = false;
+        var cameraModifying2 = false;
+        var camera = bimViewer.viewer.scene.camera;
+        var eye = camera.eye;
+        var look = camera.look;
+        var up = camera.up;
+        var i2iDist = 7;
+        camera.on("viewMatrix", function(matrix) {
+            cameraModifying = true;
+            var longSide = Math.sqrt( eye[0]*eye[0] + eye[1]*eye[1] + eye[2]*eye[2] );
+            var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
+            if(!cameraModifying2){
+                bimViewer2.setCamera({
+                    "eye": eye,
+                    "look": look,
+                    "up": up
+                });
+                bimViewer2.viewer.scene.camera.orbitYaw(yawAngle);
+            }
+            cameraModifying = false;
+            console.log(bimViewer.viewer.scene.camera.eye);
+            console.log(bimViewer2.viewer.scene.camera.eye);
+        });
+        var camera2 = bimViewer2.viewer.scene.camera;
+        var eye2 = camera2.eye;
+        var look2 = camera2.look;
+        var up2 = camera2.up;
+        camera2.on("viewMatrix", function(matrix) {
+            cameraModifying2 = true;
+            var longSide = Math.sqrt( eye2[0]*eye2[0] + eye2[1]*eye2[1] + eye2[2]*eye2[2] );
+            var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
+            if(!cameraModifying) {
+                bimViewer.setCamera({
+                    "eye": eye2,
+                    "look": look2,
+                    "up": up2
+                });
+                bimViewer.viewer.scene.camera.orbitYaw(-yawAngle);
+            }
+            console.log(bimViewer.viewer.scene.camera.eye);
+            console.log(bimViewer2.viewer.scene.camera.eye);
+            cameraModifying2 = false;
+        });
         function getRequestParams() {
             var vars = {};
             window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {

@@ -332,7 +332,7 @@
         var look = camera.look;
         var up = camera.up;
         var i2iDist = 7;
-        bimViewer.viewer.scene.on("rendered", function (e) {
+        bimViewer.viewer.scene.on("rendering", function(matrix) {
             cameraModifying = true;
             viewpoint = bimViewer.saveBCFViewpoint({});
             var longSide = Math.sqrt( eye[0]*eye[0] + eye[1]*eye[1] + eye[2]*eye[2] );
@@ -345,6 +345,8 @@
                     "up": up
                 });
                 bimViewer2.viewer.scene.camera.orbitYaw(yawAngle);
+            }
+            cameraModifying = false;
         });
         camera.on("viewMatrix", function(matrix) {
             cameraModifying = true; 
@@ -359,8 +361,6 @@
                 bimViewer2.viewer.scene.camera.orbitYaw(yawAngle);
             }
             cameraModifying = false;
-            console.log(bimViewer.viewer.scene.camera.eye);
-            console.log(bimViewer2.viewer.scene.camera.eye);
         });
         var camera2 = bimViewer2.viewer.scene.camera;
         var eye2 = camera2.eye;
@@ -380,8 +380,6 @@
                 });
                 bimViewer.viewer.scene.camera.orbitYaw(-yawAngle);
             }
-            console.log(bimViewer.viewer.scene.camera.eye);
-            console.log(bimViewer2.viewer.scene.camera.eye);
             cameraModifying2 = false;
         });
         function getRequestParams() {

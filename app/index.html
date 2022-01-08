@@ -334,7 +334,8 @@
                 "up": up
             });
             bimViewer2.viewer.scene.camera.orbitYaw(90);
-            console.log(bimViewer2.viewer.scene.camera.viewMatrix);
+            console.log(bimViewer.viewer.scene.camera.eye);
+            console.log(bimViewer2.viewer.scene.camera.eye);
         });
         function getRequestParams() {
             var vars = {};

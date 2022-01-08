@@ -101,7 +101,6 @@
             enableEditModels: enableEditModels,
             enableQueryObjects: enableQueryObjects
         });
-        var camera = bimViewer.viewer.scene.camera;
         const bimViewer2 = new BIMViewer(server2, {
             localeService: new LocaleService({
                 messages: localeMessages,
@@ -321,17 +320,21 @@
             (errorMsg) => {
                 console.error(errorMsg);
             });
-        var eyeVec = camera.eye.map((e,i) => e - camera.look[i]);
-        var transDir = [-eyeVec[1], eyeVec[0], 0];
-        var dirLen = Math.sqrt(transDir[0]*transDir[0] + transDir[1]*transDir[1] + transDir[2]*transDir[2]);
-        transDir = transDir.map((e,i) => e / dirLen);
-        var transLen = 10;
-        var newEye = eyeVec.map((e, i) => e + transDir[i] * 10);
-        
-        bimViewer2.setCamera({
-            "eye": newEye,
-            "look": camera.look,
-            "up": camera.up
+        var camera = bimViewer.viewer.scene.camera;
+        camera.on("viewMatrix", function(matrix) {
+            var eyeVec = camera.eye.map((e,i) => e - camera.look[i]);
+            var transDir = [-eyeVec[1], eyeVec[0], 0];
+            var dirLen = Math.sqrt(transDir[0]*transDir[0] + transDir[1]*transDir[1] + transDir[2]*transDir[2]);
+            transDir = transDir.map((e,i) => e / dirLen);
+            var transLen = 10;
+            var newEye = eyeVec.map((e, i) => e + transDir[i] * 10);
+
+            bimViewer2.setCamera({
+                "eye": newEye,
+                "look": camera.look,
+                "up": camera.up
+            });
+            console.log(bimViewer2.viewer.scene.camera.viewMatrix);
         });
         function getRequestParams() {
             var vars = {};

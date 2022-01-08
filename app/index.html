@@ -338,9 +338,9 @@
             console.log(bimViewer2.viewer.scene.camera.eye);
         });
         var camera2 = bimViewer2.viewer.scene.camera;
-        var eye2 = camera.eye;
-        var look2 = camera.look;
-        var up2 = camera.up;
+        var eye2 = camera2.eye;
+        var look2 = camera2.look;
+        var up2 = camera2.up;
         camera2.on("viewMatrix", function(matrix) {
             var longSide = Math.sqrt( eye2[0]*eye2[0] + eye2[1]*eye2[1] + eye2[2]*eye2[2] );
             var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;

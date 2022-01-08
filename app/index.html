@@ -321,25 +321,19 @@
                 console.error(errorMsg);
             });
         var camera = bimViewer.viewer.scene.camera;
+        var eye = camera.eye;
+        var look = camera.look;
+        var up = camera.up;
+        var i2iDist = 3;
         camera.on("viewMatrix", function(matrix) {
-            var eyeVec = camera.eye.map((e,i) => e - camera.look[i]);
-            var transDir = [-eyeVec[2], 0, -eyeVec[0]];
-            var dirLen = Math.sqrt(transDir[0]*transDir[0] + transDir[1]*transDir[1] + transDir[2]*transDir[2]);
-            transDir = transDir.map(function(x) { return x / dirLen; });
-            var transLen = 10;
-            var panVec = transDir.map(function(x) { return x * transLen; });
-
+            var longSide = Math.sqrt( eye[0]*eye[0] + eye[1]*eye[1] + eye[2]*eye[2] );
+            var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
             bimViewer2.setCamera({
-                "eye": camera.eye, //x: right, y: top, z: front
-                "look": camera.look,
-                "up": camera.up
+                "eye": eye,
+                "look": look,
+                "up": up
             });
-            bimViewer2.viewer.scene.camera.pan(panVec);
-            bimViewer2.setCamera({
-                "look": camera.look,
-                "up": camera.up
-            });
-            
+            bimViewer2.viewer.scene.camera.orbitYaw(yawAngle);
             console.log(bimViewer2.viewer.scene.camera.viewMatrix);
         });
         function getRequestParams() {

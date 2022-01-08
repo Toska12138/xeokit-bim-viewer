@@ -325,7 +325,8 @@
         const bcfViewpoints = new BCFViewpointsPlugin(bimViewer.viewer);
         const bcfViewpoints2 = new BCFViewpointsPlugin(bimViewer2.viewer);
         const viewpoint = bcfViewpoints.getViewpoint();
-        bcfViewpoints.setViewpoint(viewpoint);
+        console.log(viewpoint);
+//         bcfViewpoints.setViewpoint(viewpoint);
         var cameraModifying = false;
         var cameraModifying2 = false;
         var camera = bimViewer.viewer.scene.camera;

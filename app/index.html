@@ -325,9 +325,9 @@
             var eyeVec = camera.eye.map((e,i) => e - camera.look[i]);
             var transDir = [-eyeVec[2], 0, -eyeVec[0]];
             var dirLen = Math.sqrt(transDir[0]*transDir[0] + transDir[1]*transDir[1] + transDir[2]*transDir[2]);
-            transDir = transDir.map(function(x) x / dirLen);
+            transDir = transDir.map(function(x) { return x / dirLen; });
             var transLen = 10;
-            var panVec = transDir.map(function(x) x * transLen);
+            var panVec = transDir.map(function(x) { return x * transLen; });
 
             bimViewer2.setCamera({
                 "eye": camera.eye, //x: right, y: top, z: front

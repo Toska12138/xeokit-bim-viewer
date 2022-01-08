@@ -335,6 +335,10 @@
                 "up": camera.up
             });
             bimViewer2.viewer.scene.camera.pan(panVec);
+            bimViewer2.setCamera({
+                "look": camera.look,
+                "up": camera.up
+            });
             
             console.log(bimViewer2.viewer.scene.camera.viewMatrix);
         });

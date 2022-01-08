@@ -47,7 +47,7 @@
     // Set up application
 
     import {Server, BIMViewer, LocaleService} from "../dist/xeokit-bim-viewer.es.js";
-    import {Viewer, BCFViewpointsPlugin} from "../dist/xeokit-sdk.es.js";
+    import {Viewer} from "../dist/xeokit-sdk.es.js";
 
     import {messages as localeMessages} from "./locales/messages.js";
     import {PropertiesInspector} from "./src/PropertiesInspector.js";
@@ -322,11 +322,9 @@
                 console.error(errorMsg);
             });
         
-        const bcfViewpoints = new BCFViewpointsPlugin(bimViewer.viewer);
-        const bcfViewpoints2 = new BCFViewpointsPlugin(bimViewer2.viewer);
-        var viewpoint = bcfViewpoints.getViewpoint();
+        var viewpoint = bimViewer.saveBCFViewpoint({});
         console.log(viewpoint);
-//         bcfViewpoints.setViewpoint(viewpoint);
+        bimViewer2.loadBCFViewpoint(viewpoint,{});
         var cameraModifying = false;
         var cameraModifying2 = false;
         var camera = bimViewer.viewer.scene.camera;

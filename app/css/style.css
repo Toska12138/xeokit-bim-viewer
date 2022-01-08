@@ -121,7 +121,7 @@ body {
     top: 0;
     left: -460px;
     z-index: 100000;
-    width: 460px;
+    width: 440px;
     transition: all 300ms ease-in-out;
 }
 #myExplorer2 {

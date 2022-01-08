@@ -332,7 +332,7 @@
         var look = camera.look;
         var up = camera.up;
         var i2iDist = 7;
-        bimViewer.viewer.scene.on("rendering", function(matrix) {
+        bimViewer.viewer.scene.on("rendered", function(matrix) {
             cameraModifying = true;
             viewpoint = bimViewer.saveBCFViewpoint({});
             var longSide = Math.sqrt( eye[0]*eye[0] + eye[1]*eye[1] + eye[2]*eye[2] );

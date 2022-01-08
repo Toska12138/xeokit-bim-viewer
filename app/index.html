@@ -324,7 +324,7 @@
         var eye = camera.eye;
         var look = camera.look;
         var up = camera.up;
-        var i2iDist = 3;
+        var i2iDist = 7;
         camera.on("viewMatrix", function(matrix) {
             var longSide = Math.sqrt( eye[0]*eye[0] + eye[1]*eye[1] + eye[2]*eye[2] );
             var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
@@ -333,7 +333,7 @@
                 "look": look,
                 "up": up
             });
-            bimViewer2.viewer.scene.camera.orbitYaw(yawAngle);
+            bimViewer2.viewer.scene.camera.orbitYaw(90);
             console.log(bimViewer.viewer.scene.camera.eye);
             console.log(bimViewer2.viewer.scene.camera.eye);
         });

@@ -101,9 +101,7 @@
             enableEditModels: enableEditModels,
             enableQueryObjects: enableQueryObjects
         });
-        const scene2 = new Scene(bimViewer.viewer, {
-            "canvasElement": document.getElementById("myCanvas2")
-        });
+
         const bimViewer2 = new BIMViewer(server2, {
             localeService: new LocaleService({
                 messages: localeMessages,

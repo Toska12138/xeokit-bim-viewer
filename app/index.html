@@ -101,8 +101,9 @@
             enableEditModels: enableEditModels,
             enableQueryObjects: enableQueryObjects
         });
-        
-         const bimViewer2 = new BIMViewer(server2, {
+        var camera = bimViewer.viewer.scene.camera;
+        console.log(camera.viewMatrix);
+        const bimViewer2 = new BIMViewer(server2, {
             localeService: new LocaleService({
                 messages: localeMessages,
                 locale: locale

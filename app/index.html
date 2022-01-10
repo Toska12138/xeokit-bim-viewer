@@ -332,22 +332,6 @@
         var look = camera.look;
         var up = camera.up;
         var i2iDist = 0;
-        bimViewer.viewer.scene.on("rendered", function(matrix) {
-            cameraModifying = true;
-            viewpoint = bimViewer.saveBCFViewpoint({});
-            var longSide = Math.sqrt( eye[0]*eye[0] + eye[1]*eye[1] + eye[2]*eye[2] );
-            var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
-            if(!cameraModifying2){
-                bimViewer2.loadBCFViewpoint(viewpoint,{});
-                bimViewer2.setCamera({
-                    "eye": eye,
-                    "look": look,
-                    "up": up
-                });
-                bimViewer2.viewer.scene.camera.orbitYaw(yawAngle);
-            }
-            cameraModifying = false;
-        });
         camera.on("viewMatrix", function(matrix) {
             cameraModifying = true; 
             var longSide = Math.sqrt( eye[0]*eye[0] + eye[1]*eye[1] + eye[2]*eye[2] );
@@ -358,14 +342,10 @@
                     "look": look,
                     "up": up
                 });
-                bimViewer2.viewer.scene.camera.orbitYaw(yawAngle);
+                bimViewer2.viewer.scene.camera.pan([7, 0, 0]);
             }
             cameraModifying = false;
         });
-        var camera2 = bimViewer2.viewer.scene.camera;
-        var eye2 = camera2.eye;
-        var look2 = camera2.look;
-        var up2 = camera2.up;
         camera2.on("viewMatrix", function(matrix) {
             cameraModifying2 = true;
             viewpoint = bimViewer2.saveBCFViewpoint({});
@@ -378,10 +358,60 @@
                     "look": look2,
                     "up": up2
                 });
-                bimViewer.viewer.scene.camera.orbitYaw(-yawAngle);
+                bimViewer2.viewer.scene.camera.pan([-7, 0, 0]);
             }
             cameraModifying2 = false;
         });
+//         bimViewer.viewer.scene.on("rendered", function(matrix) {
+//             cameraModifying = true;
+//             viewpoint = bimViewer.saveBCFViewpoint({});
+//             var longSide = Math.sqrt( eye[0]*eye[0] + eye[1]*eye[1] + eye[2]*eye[2] );
+//             var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
+//             if(!cameraModifying2){
+//                 bimViewer2.loadBCFViewpoint(viewpoint,{});
+//                 bimViewer2.setCamera({
+//                     "eye": eye,
+//                     "look": look,
+//                     "up": up
+//                 });
+//                 bimViewer2.viewer.scene.camera.orbitYaw(yawAngle);
+//             }
+//             cameraModifying = false;
+//         });
+//         camera.on("viewMatrix", function(matrix) {
+//             cameraModifying = true; 
+//             var longSide = Math.sqrt( eye[0]*eye[0] + eye[1]*eye[1] + eye[2]*eye[2] );
+//             var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
+//             if(!cameraModifying2){
+//                 bimViewer2.setCamera({
+//                     "eye": eye,
+//                     "look": look,
+//                     "up": up
+//                 });
+//                 bimViewer2.viewer.scene.camera.orbitYaw(yawAngle);
+//             }
+//             cameraModifying = false;
+//         });
+//         var camera2 = bimViewer2.viewer.scene.camera;
+//         var eye2 = camera2.eye;
+//         var look2 = camera2.look;
+//         var up2 = camera2.up;
+//         camera2.on("viewMatrix", function(matrix) {
+//             cameraModifying2 = true;
+//             viewpoint = bimViewer2.saveBCFViewpoint({});
+//             var longSide = Math.sqrt( eye2[0]*eye2[0] + eye2[1]*eye2[1] + eye2[2]*eye2[2] );
+//             var yawAngle = 2 * Math.asin(i2iDist/2.0/longSide) * Math.PI;
+//             if(!cameraModifying) {
+//                 bimViewer.loadBCFViewpoint(viewpoint,{});
+//                 bimViewer.setCamera({
+//                     "eye": eye2,
+//                     "look": look2,
+//                     "up": up2
+//                 });
+//                 bimViewer.viewer.scene.camera.orbitYaw(-yawAngle);
+//             }
+//             cameraModifying2 = false;
+//         });
         function getRequestParams() {
             var vars = {};
             window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {

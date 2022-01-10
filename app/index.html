@@ -331,7 +331,7 @@
         var eye = camera.eye;
         var look = camera.look;
         var up = camera.up;
-        var i2iDist = 7;
+        var i2iDist = 0;
         bimViewer.viewer.scene.on("rendered", function(matrix) {
             cameraModifying = true;
             viewpoint = bimViewer.saveBCFViewpoint({});

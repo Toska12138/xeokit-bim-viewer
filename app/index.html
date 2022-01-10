@@ -331,7 +331,7 @@
         var eye = camera.eye;
         var look = camera.look;
         var up = camera.up;
-        var i2iDist = 0;
+        var i2iDist = 3;
         
         var camera2 = bimViewer2.viewer.scene.camera;
         var eye2 = camera2.eye;
@@ -349,7 +349,7 @@
                     "look": look,
                     "up": up
                 });
-                bimViewer2.viewer.scene.camera.pan([-7, 0, 0]);
+                bimViewer2.viewer.scene.camera.pan([-i2iDist, 0, 0]);
             }
             cameraModifying = false;
         });
@@ -363,7 +363,7 @@
                     "look": look,
                     "up": up
                 });
-                bimViewer2.viewer.scene.camera.pan([7, 0, 0]);
+                bimViewer2.viewer.scene.camera.pan([i2iDist, 0, 0]);
             }
             cameraModifying = false;
         });
@@ -379,7 +379,7 @@
                     "look": look2,
                     "up": up2
                 });
-                bimViewer.viewer.scene.camera.pan([-7, 0, 0]);
+                bimViewer.viewer.scene.camera.pan([-i2iDist, 0, 0]);
             }
             cameraModifying2 = false;
         });

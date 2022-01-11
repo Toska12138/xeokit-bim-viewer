@@ -1,10 +1,10 @@
 {
-    "id": "HDB",
-    "name": "HDB",
+    "id": "Model",
+    "name": "Model",
     "models": [
         {
             "id": "design",
-            "name": "HDB"
+            "name": "Model"
         }
     ],
     "viewerConfigs": {
